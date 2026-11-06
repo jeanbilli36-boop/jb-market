@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="JB MARKET : découvrez nos produits et commandez facilement au Bénin.">
+<title>JB MARKET | Votre marché en ligne</title>
+
+<style>
+:root {
+  --green: #176b45;
+  --green-dark: #104d32;
+  --orange: #ff8a24;
+  --cream: #fffaf2;
+  --text: #202820;
+  --muted: #707870;
+  --white: #ffffff;
+  --shadow: 0 8px 25px rgba(0,0,0,.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Arial, sans-serif;
+  color: var(--text);
+  background: #f7f9f6;
+  line-height: 1.5;
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button { cursor: pointer; }
+
+.container {
+  width: min(1150px, 92%);
+  margin: auto;
+}
+
+/* BARRE DU HAUT */
+.topbar {
+  background: var(--green-dark);
+  color: white;
+  text-align: center;
+  padding: 9px;
+  font-size: 13px;
+}
+
+/* HEADER */
+header {
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+
+.navbar {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo {
+  color: var(--green);
+  font-size: 26px;
+  font-weight: 900;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.logo span { color: var(--orange); }
+
+.nav-links {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.nav-links a:hover { color: var(--green); }
+
+.cart-button, .primary-button {
+  border: none;
+  border-radius: 9px;
+  background: var(--orange);
+  color: white;
+  padding: 12px 18px;
+  font-weight: 800;
+}
+
+.cart-button:hover, .primary-button:hover {
+  background: #e87512;
+}
+
+/* ACCUEIL */
+.hero {
+  background:
+    linear-gradient(100deg, rgba(12,65,41,.95), rgba(23,107,69,.82)),
+    radial-gradient(circle at right, #6ca77c, #176b45);
+  color: white;
+  padding: 75px 0;
+}
+
+.hero-content {
+  max-width: 650px;
+}
+
+.hero-tag {
+  display: inline-block;
+  color: white;
+  background: rgba(255,255,255,.15);
+  padding: 7px 13px;
+  border-radius: 30px;
+  margin-bottom: 18px;
+  font-size: 13px;
+}
+
+.hero h1 {
+  font-size: clamp(34px, 6vw, 57px);
+  line-height: 1.12;
+  margin-bottom: 18px;
+}
+
+.hero h1 span { color: #ffb35e; }
+
+.hero p {
+  font-size: 17px;
+  max-width: 540px;
+  color: #e5f0e9;
+  margin-bottom: 25px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-actions a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 14px 22px;
+  border-radius: 9px;
+  font-weight: bold;
+}
+
+.hero-main {
+  background: var(--orange);
+  color: white;
+}
+
+.hero-second {
+  border: 1px solid white;
+  color: white;
+}
+
+/* AVANTAGES */
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-top: -25px;
+  position: relative;
+}
+
+.benefit {
+  background: white;
+  padding: 19px 12px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.benefit strong {
+  display: block;
+  color: var(--green);
+  margin-bottom: 4px;
+}
+
+.benefit small { color: var(--muted); }
+
+/* SECTIONS */
+.section {
+  padding: 65px 0;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section-heading h2 {
+  font-size: 30px;
+  color: var(--green-dark);
+  margin-bottom: 7px;
+}
+
+.section-heading p { color: var(--muted); }
+
+/* RECHERCHE */
+.search-box {
+  max-width: 550px;
+  margin: 0 auto 25px;
+  display: flex;
+  background: white;
+  border: 1px solid #e1e7e1;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.search-box input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  padding: 15px;
+}
+
+.search-box span {
+  padding: 13px 16px;
+}
+
+/* CATEGORIES */
+.categories {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.category-btn {
+  border: 1px solid #dce5dc;
+  background: white;
+  color: var(--green-dark);
+  padding: 10px 17px;
+  border-radius: 30px;
+  font-weight: 700;
+}
+
+.category-btn.active,
+.category-btn:hover {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
+
+/* PRODUITS */
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.product {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform .2s;
+}
+
+.product:hover { transform: translateY(-5px); }
+
+.product-image {
+  height: 175px;
+  display: grid;
+  place-items: center;
+  background: var(--cream);
+  font-size: 65px;
+}
+
+.product-info { padding: 16px; }
+
+.product-category {
+  color: var(--green);
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.product h3 {
+  font-size: 17px;
+  margin: 6px 0;
+}
+
+.product-price {
+  color: var(--green);
+  font-size: 19px;
+  font-weight: 900;
+  margin: 10px 0;
+}
+
+.add-button {
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  background: var(--green);
+  color: white;
+  font-weight: bold;
+}
+
+.add-button:hover { background: var(--green-dark); }
+
+.empty-message {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 30px;
+  color: var(--muted);
+}
+
+/* PANIER */
+.cart-section {
+  background: #edf5ef;
+}
+
+.cart-panel {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  max-width: 850px;
+  margin: auto;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid #edf0ed;
+}
+
+.cart-item button {
+  border: none;
+  background: #fff0eb;
+  color: #b83b24;
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 21px;
+  font-weight: 900;
+  color: var(--green-dark);
+  padding: 20px 0;
+}
+
+/* FORMULAIRE */
+.order-form {
+  border-top: 1px solid #e8eee8;
+  padding-top: 22px;
+}
+
+.order-form h3 {
+  color: var(--green-dark);
+  margin-bottom: 15px;
+}
+
+.form-group { margin-bottom: 15px; }
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  border: 1px solid #dce5dc;
+  border-radius: 8px;
+  padding: 13px;
+  outline: none;
+  background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--green);
+}
+
+.delivery-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 12px 0 18px;
+}
+
+.delivery-option {
+  display: block;
+  border: 2px solid #e1e9e1;
+  border-radius: 10px;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.delivery-option:has(input:checked) {
+  border-color: var(--green);
+  background: #eff8f0;
+}
+
+.delivery-option input {
+  margin-right: 7px;
+  accent-color: var(--green);
+}
+
+.delivery-option strong {
+  display: block;
+  margin-top: 5px;
+  color: var(--green-dark);
+}
+
+.delivery-option small { color: var(--muted); }
+
+.address-box { margin-top: 12px; }
+
+.order-note {
+  background: #fff7e9;
+  color: #79501e;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin: 15px 0;
+}
+
+.checkout-button {
+  width: 100%;
+  border: none;
+  background: #16864d;
+  color: white;
+  border-radius: 9px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.checkout-button:hover { background: #10663a; }
+
+/* DEMANDE PRODUIT */
+.request-box {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  max-width: 700px;
+  margin: auto;
+  box-shadow: var(--shadow);
+}
+
+.request-box p {
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.request-box button {
+  width: 100%;
+}
+
+/* PIED DE PAGE */
+footer {
+  background: #103e2b;
+  color: white;
+  padding: 40px 0 20px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 25px;
+}
+
+footer h3 { margin-bottom: 12px; }
+footer p, footer a {
+  color: #d7e6dc;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+footer a { display: block; margin: 7px 0; }
+
+.copyright {
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,.2);
+  padding-top: 18px;
+  margin-top: 25px;
+  font-size: 13px;
+}
+
+/* WHATSAPP FLOTTANT */
+.whatsapp-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 30;
+  background: #20b85a;
+  color: white;
+  text-decoration: none;
+  padding: 14px 18px;
+  border-radius: 40px;
+  box-shadow: var(--shadow);
+  font-weight: bold;
+}
+
+/* RESPONSIVE */
+@media (max-width: 850px) {
+  .products { grid-template-columns: repeat(2, 1fr); }
+  .benefits { grid-template-columns: repeat(2, 1fr); }
+  .nav-links { display: none; }
+}
+
+@media (max-width: 520px) {
+  .hero { padding: 55px 0; }
+  .section { padding: 45px 0; }
+  .section-heading h2 { font-size: 25px; }
+  .products { gap: 12px; }
+  .product-image { height: 130px; font-size: 48px; }
+  .product-info { padding: 11px; }
+  .product h3 { font-size: 15px; }
+  .delivery-options { grid-template-columns: 1fr; }
+  .footer-content { grid-template-columns: 1fr; }
+  .cart-panel { padding: 17px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  🛍️ JB MARKET — Vos achats simplement, partout au Bénin
+</div>
+
+<header>
+  <div class="container navbar">
+    <a href="#" class="logo">JB <span>MARKET</span></a>
+
+    <nav class="nav-links">
+      <a href="#accueil">Accueil</a>
+      <a href="#boutique">Boutique</a>
+      <a href="#commande">Commander</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <button class="cart-button"
+      onclick="document.getElementById('commande').scrollIntoView()">
+      🛒 Panier (<span id="cartCount">0</span>)
+    </button>
+  </div>
+</header>
+
+<!-- ACCUEIL -->
+<section class="hero" id="accueil">
+  <div class="container">
+    <div class="hero-content">
+      <span class="hero-tag">BIENVENUE CHEZ JB MARKET</span>
+      <h1>Tout ce dont vous avez besoin, <span>au même endroit.</span></h1>
+      <p>
+        Découvrez nos produits, choisissez vos articles et
+        commandez facilement depuis votre téléphone.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#boutique" class="hero-main">Découvrir la boutique →</a>
+        <a href="#commande" class="hero-second">Mon panier</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AVANTAGES -->
+<div class="container benefits">
+  <div class="benefit">
+    <strong>🛍️ Grand choix</strong>
+    <small>Plusieurs catégories</small>
+  </div>
+  <div class="benefit">
+    <strong>📱 Commande facile</strong>
+    <small>Directement sur WhatsApp</small>
+  </div>
+  <div class="benefit">
+    <strong>🚚 Livraison</strong>
+    <small>Ou retrait sur place</small>
+  </div>
+  <div class="benefit">
+    <strong>🤝 Service client</strong>
+    <small>À votre écoute</small>
+  </div>
+</div>
+
+<!-- BOUTIQUE -->
+<section class="section" id="boutique">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Découvrez nos produits</h2>
+      <p>Faites votre choix et ajoutez vos articles au panier.</p>
+    </div>
+
+    <div class="search-box">
+      <input type="search" id="searchInput"
+        placeholder="Rechercher un produit..."
+        oninput="renderProducts()">
+      <span>🔎</span>
+    </div>
+
+    <div class="categories" id="categories">
+      <button class="category-btn active"
+        onclick="setCategory('Tous', this)">Tout</button>
+      <button class="category-btn"
+        onclick="setCategory('Alimentation', this)">🍚 Alimentation</button>
+      <button class="category-btn"
+        onclick="setCategory('Mode', this)">👕 Mode</button>
+      <button class="category-btn"
+        onclick="setCategory('Électronique', this)">📱 Électronique</button>
+      <button class="category-btn"
+        onclick="setCategory('Maison', this)">🏠 Maison</button>
+    </div>
+
+    <div class="products" id="products"></div>
+  </div>
+</section>
+
+<!-- PANIER ET COMMANDE -->
+<section class="section cart-section" id="commande">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Votre panier</h2>
+      <p>Vérifiez vos articles avant de confirmer votre commande.</p>
+    </div>
+
+    <div class="cart-panel">
+      <div id="cartItems">
+        <p>Votre panier est vide pour le moment.</p>
+      </div>
+
+      <div class="cart-total">
+        <span>Total des produits</span>
+        <span id="cartTotal">0 FCFA</span>
+      </div>
+
+      <div class="order-form">
+        <h3>📋 Vos informations</h3>
+
+        <div class="form-group">
+          <label for="customerName">Nom et prénom *</label>
+          <input id="customerName" type="text"
+            placeholder="Votre nom complet">
+        </div>
+
+        <div class="form-group">
+          <label for="customerPhone">Téléphone *</label>
+          <input id="customerPhone" type="tel"
+            placeholder="Exemple : 01 90 00 00 00">
+        </div>
+
+        <h3>🚚 Comment souhaitez-vous recevoir votre commande ?</h3>
+
+        <div class="delivery-options">
+          <label class="delivery-option">
+            <input type="radio" name="deliveryMode"
+              value="Livraison à domicile" checked
+              onchange="toggleAddress()">
+            <strong>🚚 Livraison à domicile</strong>
+            <small>Recevez votre commande à l'adresse indiquée.</small>
+          </label>
+
+          <label class="delivery-option">
+            <input type="radio" name="deliveryMode"
+              value="Retrait sur place"
+              onchange="toggleAddress()">
+            <strong>🏪 Retrait sur place</strong>
+            <small>Récupérez votre commande au point de retrait.</small>
+          </label>
+        </div>
+
+        <div class="address-box" id="deliveryAddress">
+          <div class="form-group">
+            <label for="customerAddress">Adresse de livraison *</label>
+            <input type="text" id="customerAddress"
+              placeholder="Quartier, rue, repère, ville...">
+          </div>
+        </div>
+
+        <div class="order-note">
+          ℹ️ Les frais de livraison éventuels et les modalités
+          de paiement seront confirmés avec vous sur WhatsApp
+          avant validation définitive.
+        </div>
+
+        <button class="checkout-button" onclick="checkout()">
+          Commander maintenant sur WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUIT SUR DEMANDE -->
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Vous recherchez un produit précis ?</h2>
+      <p>Faites-nous connaître votre besoin.</p>
+    </div>
+
+    <div class="request-box">
+      <p>
+        Vous ne trouvez pas votre article dans notre boutique ?
+        Envoyez-nous une demande. Notre équipe pourra vous répondre.
+      </p>
+
+      <div class="form-group">
+        <label for="requestedProduct">Produit recherché</label>
+        <input id="requestedProduct" type="text"
+          placeholder="Exemple : ordinateur, sac, riz...">
+      </div>
+
+      <button class="primary-button" onclick="requestProduct()">
+        Envoyer ma demande
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- PIED DE PAGE -->
+<footer id="contact">
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <h3>JB MARKET</h3>
+        <p>
+          Votre boutique en ligne pour découvrir et commander
+          différents produits simplement au Bénin.
+        </p>
+      </div>
+
+      <div>
+        <h3>Navigation</h3>
+        <a href="#accueil">Accueil</a>
+        <a href="#boutique">Nos produits</a>
+        <a href="#commande">Mon panier</a>
+      </div>
+
+      <div>
+        <h3>Contact</h3>
+        <p>WhatsApp : +229 01 40 74 76 25</p>
+        <a href="https://wa.me/2290140747625" target="_blank">
+          Nous contacter
+        </a>
+      </div>
+    </div>
+
+    <div class="copyright">
+      © <span id="year"></span> JB MARKET — Tous droits réservés.
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-float"
+  href="https://wa.me/2290140747625"
+  target="_blank">💬 WhatsApp</a>
+
+<script>
+/* CONFIGURATION */
+const WHATSAPP = "2290140747625";
+
+/* PRODUITS DE DÉMONSTRATION
+   Modifiez les noms, prix et catégories avec vos vrais produits. */
+const products = [
+  {id:1, name:"Riz parfumé", category:"Alimentation", price:15000, emoji:"🍚"},
+  {id:2, name:"Huile alimentaire", category:"Alimentation", price:2500, emoji:"🫗"},
+  {id:3, name:"Sucre", category:"Alimentation", price:1000, emoji:"🍬"},
+  {id:4, name:"T-shirt", category:"Mode", price:5000, emoji:"👕"},
+  {id:5, name:"Chaussures", category:"Mode", price:12000, emoji:"👟"},
+  {id:6, name:"Montre", category:"Mode", price:8500, emoji:"⌚"},
+  {id:7, name:"Écouteurs", category:"Électronique", price:5000, emoji:"🎧"},
+  {id:8, name:"Téléphone", category:"Électronique", price:75000, emoji:"📱"},
+  {id:9, name:"Lampe", category:"Maison", price:4000, emoji:"💡"},
+  {id:10, name:"Sac", category:"Mode", price:9000, emoji:"👜"}
+];
+
+let cart = [];
+let selectedCategory = "Tous";
+
+function money(value) {
+  return new Intl.NumberFormat("fr-FR").format(value) + " FCFA";
+}
+
+function setCategory(category, button) {
+  selectedCategory = category;
+
+  document.querySelectorAll(".category-btn")
+    .forEach(btn => btn.classList.remove("active"));
+
+  button.classList.add("active");
+  renderProducts();
+}
+
+function renderProducts() {
+  const container = document.getElementById("products");
+  const search = document.getElementById("searchInput")
+    .value.toLowerCase().trim();
+
+  const filtered = products.filter(product => {
+    const matchesCategory =
+      selectedCategory === "Tous" ||
+      product.category === selectedCategory;
+
+    const matchesSearch =
+      product.name.toLowerCase().includes(search);
+
+    return matchesCategory && matchesSearch;
+  });
+
+  if (!filtered.length) {
+    container.innerHTML =
+      '<p class="empty-message">Aucun produit trouvé.</p>';
+    return;
+  }
+
+  container.innerHTML = filtered.map(product => `
+    <article class="product">
+      <div class="product-image">${product.emoji}</div>
+      <div class="product-info">
+        <span class="product-category">${product.category}</span>
+        <h3>${product.name}</h3>
+        <div class="product-price">${money(product.price)}</div>
+        <button class="add-button"
+          onclick="addToCart(${product.id})">
+          + Ajouter au panier
+        </button>
+      </div>
+    </article>
+  `).join("");
+}
+
+function addToCart(id) {
+  const product = products.find(p => p.id === id);
+  const existing = cart.find(p => p.id === id);
+
+  if (existing) {
+    existing.quantity++;
+  } else {
+    cart.push({...product, quantity:1});
+  }
+
+  renderCart();
+  alert(product.name + " ajouté au panier !");
+}
+
+function removeItem(id) {
+  cart = cart.filter(p => p.id !== id);
+  renderCart();
+}
+
+function renderCart() {
+  const container = document.getElementById("cartItems");
+  const count = cart.reduce((sum, p) => sum + p.quantity, 0);
+  const total = cart.reduce(
+    (sum, p) => sum + p.price * p.quantity, 0
+  );
+
+  document.getElementById("cartCount").textContent = count;
+  document.getElementById("cartTotal").textContent = money(total);
+
+  if (!cart.length) {
+    container.innerHTML = "<p>Votre panier est vide pour le moment.</p>";
+    return;
+  }
+
+  container.innerHTML = cart.map(p => `
+    <div class="cart-item">
+      <div>
+        <strong>${p.name}</strong><br>
+        <small>${p.quantity} × ${money(p.price)}</small>
+      </div>
+      <div>
+        <strong>${money(p.price * p.quantity)}</strong>
+        <button onclick="removeItem(${p.id})">Retirer</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function toggleAddress() {
+  const mode = document.querySelector(
+    'input[name="deliveryMode"]:checked'
+  ).value;
+
+  const addressBox = document.getElementById("deliveryAddress");
+  const addressInput = document.getElementById("customerAddress");
+
+  const needsAddress = mode === "Livraison à domicile";
+
+  addressBox.style.display = needsAddress ? "block" : "none";
+  addressInput.required = needsAddress;
+}
+
+function checkout() {
+  if (!cart.length) {
+    alert("Votre panier est vide. Ajoutez d'abord un produit.");
+    return;
+  }
+
+  const name = document.getElementById("customerName").value.trim();
+  const phone = document.getElementById("customerPhone").value.trim();
+
+  const mode = document.querySelector(
+    'input[name="deliveryMode"]:checked'
+  ).value;
+
+  const address = document.getElementById("customerAddress")
+    .value.trim();
+
+  if (!name || !phone) {
+    alert("Veuillez renseigner votre nom et votre téléphone.");
+    return;
+  }
+
+  if (mode === "Livraison à domicile" && !address) {
+    alert("Veuillez renseigner votre adresse de livraison.");
+    return;
+  }
+
+  let message = "Bonjour JB MARKET ! Je souhaite passer une commande.\n\n";
+  message += "CLIENT : " + name + "\n";
+  message += "TÉLÉPHONE : " + phone + "\n\n";
+  message += "MES PRODUITS :\n";
+
+  cart.forEach(p => {
+    message += "- " + p.name + " x " + p.quantity +
+      " = " + money(p.price * p.quantity) + "\n";
+  });
+
+  const total = cart.reduce(
+    (sum, p) => sum + p.price * p.quantity, 0
+  );
+
+  message += "\nTOTAL DES PRODUITS : " + money(total);
+  message += "\nMODE DE RÉCEPTION : " + mode;
+
+  if (mode === "Livraison à domicile") {
+    message += "\nADRESSE : " + address;
+  } else {
+    message += "\nMerci de me communiquer le lieu de retrait.";
+  }
+
+  message += "\n\nMerci de confirmer la disponibilité, les frais éventuels et les modalités de paiement.";
+
+  const url = "https://wa.me/" + WHATSAPP +
+    "?text=" + encodeURIComponent(message);
+
+  window.open(url, "_blank");
+}
+
+function requestProduct() {
+  const product = document.getElementById("requestedProduct")
+    .value.trim();
+
+  if (!product) {
+    alert("Veuillez indiquer le produit recherché.");
+    return;
+  }
+
+  const message = "Bonjour JB MARKET ! Je recherche ce produit : " + product +
+    ". Pouvez-vous me renseigner sur sa disponibilité et son prix ?";
+
+  window.open(
+    "https://wa.me/" + WHATSAPP +
+    "?text=" + encodeURIComponent(message),
+    "_blank"
+  );
+}
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+renderProducts();
+renderCart();
+toggleAddress();
+</script>
+
+</body>
+</html>
